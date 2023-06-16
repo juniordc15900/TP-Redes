@@ -14,24 +14,20 @@ class Servidor:
         print('Servidor iniciado')
 
         while True:
-            # Aceita uma conexão de cliente
+            # conexão cliente - servidor
             client_socket, client_address = server_socket.accept()
-            
-            # Recebe a solicitação do cliente e a decodifica para uma string
             request = client_socket.recv(1024).decode('utf-8')
 
             if request:
-                # Extrai o método de solicitação e o caminho da solicitação
                 request_method = request.split(' ')[0]
                 request_path = request.split(' ')[1]
 
                 if request_path == '/HEADER':
-                    # Se o caminho da solicitação for '/HEADER', chama o método get_header_response()
                     response = header(request)
                 else:
-                    # Caso contrário, chama o método get_file_response()
                     response = retorna_arquivo(request_path,self.dir)
 
                 # Envia a resposta ao cliente e fecha a conexão
                 client_socket.sendall(response)
                 client_socket.close()
+

@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Debug tpRedes.py",
+        "type": "python",
+        "request": "launch",
+        "program": "${workspaceFolder}/tpRedes.py",
+        "console": "integratedTerminal",
+        "args": ["8000", "/home/alessandro"]
+      }
+    ]
+  }
