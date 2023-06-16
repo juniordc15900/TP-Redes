@@ -16,12 +16,12 @@ def retorna_arquivo(request_path,dir):
 
         elif os.path.isdir(file_path):
             entries = os.listdir(file_path)
-            file_list = ''.join([f'<li><a href="{os.path.join(request_path, entry)}">{entry}</a></li>' for entry in entries])
+            file_list = ''.join([f'<a href="{os.path.join(request_path, entry)}">{entry}</a><br/> ' for entry in entries])
 
             response = b'HTTP/1.1 200 OK\r\n'
             response += b'Content-type: text/html\r\n'
             response += b'\r\n'
-            response += bytes(f'<ul>{file_list}</ul>', encoding='utf-8')
+            response += bytes(f'{file_list}', encoding='utf-8')
         else:
             response = b'HTTP/1.1 404 Not Found\r\n'
             response += b'Content-type: text/plain\r\n'
